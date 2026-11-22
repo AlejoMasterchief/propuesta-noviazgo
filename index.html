@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title id="pageTitle">Para Aby · Con todo mi amor</title>
+  
+  <!-- Meta tags románticos -->
+  <meta name="description" content="Una carta especial para Aby, con todo el amor de Alejo.">
+  <meta name="theme-color" content="#fce7eb">
+
+  <!-- Google Fonts de máxima elegancia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Fondo paisajístico: Montañas y Lago en tono Rosa y Blanco -->
+  <div class="landscape-bg">
+    <!-- Cielo al atardecer rosado -->
+    <div class="sky-gradient"></div>
+    
+    <!-- Siluetas de montañas en degradados pastel -->
+    <svg class="mountains-svg" viewBox="0 0 1440 400" preserveAspectRatio="none">
+      <defs>
+        <!-- Montañas lejanas en rosa suave -->
+        <linearGradient id="mountainsDistant" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#f8cfd9" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#f5b8c7" stop-opacity="0.6"/>
+        </linearGradient>
+        <!-- Montañas medias -->
+        <linearGradient id="mountainsMid" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#f2abbd" stop-opacity="0.75"/>
+          <stop offset="100%" stop-color="#e894a9" stop-opacity="0.5"/>
+        </linearGradient>
+        <!-- Colinas cercanas frente al lago -->
+        <linearGradient id="lakeFore" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#df8198" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#fce7eb" stop-opacity="0.2"/>
+        </linearGradient>
+      </defs>
+      <!-- Cordillera lejana con picos altos -->
+      <path d="M0,260 L90,170 L210,230 L340,130 L480,240 L620,110 L780,250 L920,140 L1070,220 L1210,120 L1350,230 L1440,160 L1440,400 L0,400 Z" fill="url(#mountainsDistant)"/>
+      <!-- Cordillera intermedia -->
+      <path d="M0,290 L140,210 L280,270 L430,190 L580,280 L730,180 L890,270 L1050,195 L1190,265 L1340,200 L1440,260 L1440,400 L0,400 Z" fill="url(#mountainsMid)"/>
+      <!-- Colinas frente al agua del lago -->
+      <path d="M0,330 Q220,280 460,330 T960,320 T1440,335 L1440,400 L0,400 Z" fill="url(#lakeFore)"/>
+    </svg>
+
+    <!-- Reflejo del Lago de aguas cristalinas -->
+    <div class="lake-water">
+      <div class="water-shimmer"></div>
+      <div class="water-ripple"></div>
+    </div>
+  </div>
+
+  <!-- Lienzo interactivo de partículas (pétalos de rosa y destellos de luz) -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- Botones flotantes de control: solo Música -->
+  <div class="floating-controls">
+    <div class="left-controls">
+    </div>
+
+    <button class="control-btn music-toggle-btn" id="musicBtn" title="Tú Me Vas Sanando" aria-label="Música">
+      <div class="vinyl-disc" id="vinylDisc">
+        <div class="vinyl-grooves"></div>
+        <div class="vinyl-heart">♥</div>
+      </div>
+      <span class="music-label">Música</span>
+      <div class="sound-wave" id="soundWave">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </button>
+  </div>
+
+  <main class="page-container">
+
+    <!-- Frase Inicial Dinámica -->
+    <header class="header-section">
+      <p class="eyebrow-text">DESPUÉS DE TODAS ESAS PALABRAS...</p>
+      <div class="typewriter-container">
+        <span class="typewriter-text" id="fraseTypewriter">Aby, esto también quiero construir con usted...</span>
+      </div>
+      <p class="subtitle-text" id="headerSubtitle"></p>
+    </header>
+
+    <!-- Polaroid 3D con Foto y Nombres de Alejo & Aby -->
+    <section class="polaroid-section">
+      <div class="polaroid-3d-wrapper" id="polaroidWrapper">
+        <div class="polaroid-card" id="polaroidCard">
+          
+          <div class="polaroid-front">
+            <!-- Cinta decorativa en tono rosa pastel -->
+            <div class="polaroid-tape polaroid-tape-top"></div>
+            
+            <div class="polaroid-photo-frame">
+              <img id="polaroidImg" src="assets/images/foto1.jpeg" alt="Alejo y Aby" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=800'">
+              <div class="photo-vignette"></div>
+              <div class="photo-shine"></div>
+            </div>
+            
+            <!-- Nombres y fecha en la zona blanca inferior (fuera de la foto) -->
+            <div class="polaroid-caption">
+              <span id="nombresDisplay">Alejo <span class="amp">&</span> Aby</span>
+              <span class="polaroid-date" id="polaroidSubtext">Dos caminos · un destino</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- El Hilo Rojo del Destino (SVG con brillo rosa) -->
+      <div class="hilo-rojo-wrapper" title="El hilo rojo del destino">
+        <svg class="hilo-rojo-svg" viewBox="0 0 160 48" fill="none">
+          <defs>
+            <linearGradient id="hiloGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f8a5b8" stop-opacity="0.3"/>
+              <stop offset="50%" stop-color="#d83a66" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#f8a5b8" stop-opacity="0.3"/>
+            </linearGradient>
+            <filter id="glowHilo">
+              <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <path class="hilo-path" d="M10,24 C45,6 65,42 90,20 C110,4 135,38 150,24" stroke="url(#hiloGrad)" stroke-width="2.5" stroke-linecap="round" filter="url(#glowHilo)"/>
+          <circle cx="10" cy="24" r="3.5" fill="#d83a66" class="hilo-dot"/>
+          <circle cx="90" cy="20" r="2.8" fill="#ffd1dc" class="hilo-pulse-center"/>
+          <circle cx="150" cy="24" r="3.5" fill="#d83a66" class="hilo-dot"/>
+        </svg>
+        <span class="hilo-leyenda">El hilo invisible que une nuestros caminos</span>
+      </div>
+    </section>
+
+    <!-- NUEVO: MANIFIESTO BASADO EN LA LLUVIA DE IDEAS -->
+    <section class="love-manifesto" aria-label="Lo que quiero construir contigo">
+      <div class="manifesto-kicker">Señorita</div>
+      <h2>El futuro que planeamos <br> <em>ahora podemos hacerlo realidad juntos </em></h2>
+      <p class="manifesto-intro">No prometo perfección. Prometo presencia, paciencia y compromiso.</p>
+
+      <div class="promise-grid">
+        <article class="promise-card">
+          <span class="promise-number">01</span>
+          <div class="promise-icon">♥</div>
+          <h3>Cuidarle sin condición</h3>
+          <p>Con paciencia, respeto y atención a los detalles.</p>
+        </article>
+
+        <article class="promise-card">
+          <span class="promise-number">02</span>
+          <div class="promise-icon">✦</div>
+          <h3>Hacer crecer su paz</h3>
+          <p>Escuchar sin juzgar y celebrar cada paso que te acerque a tus sueños.</p>
+        </article>
+
+        <article class="promise-card">
+          <span class="promise-number">03</span>
+          <div class="promise-icon">🏔</div>
+          <h3>Recorrer el camino con usted</h3>
+          <p>Viajar y reír sin motivo para luego volver a casa sabiendo que seguimos eligiéndonos.</p>
+        </article>
+      </div>
+
+      <blockquote class="manifesto-quote">
+        “Porque contigo aprendí que el amor también sabe cuidar, esperar y construir.”
+      </blockquote>
+    </section>
+
+    <!-- SOBRE BLANCO Y ROSA CON CARTA 3D -->
+    <section class="envelope-section">
+      <div class="envelope-3d-scene" id="envelopeScene">
+        
+        <div class="envelope" id="envelope">
+          
+          <!-- Fondo Trasero del Sobre -->
+          <div class="env-back"></div>
+          <div class="env-lining"></div>
+
+          <!-- LA CARTA DESPLEGABLE CON NUEVO TEXTO ORIGINAL -->
+          <div class="letter" id="letter">
+            
+            <div class="letter-paper">
+              <div class="letter-deckle-border"></div>
+              
+              <div class="postage-stamp-wrap">
+                <div class="postage-stamp">
+                  <span>ESPECIAL</span>
+                  <div class="stamp-heart">♥</div>
+                  <small>PAR AVION</small>
+                </div>
+                <div class="postmark">
+                  <div class="postmark-circle"><span>LOVE</span><small>2026</small></div>
+                  <div class="postmark-lines"></div>
+                </div>
+              </div>
+
+              <div class="letter-content">
+                <div class="letter-header">
+                  <span class="letter-to-label">Para usted:</span>
+                  <h2 class="letter-recipient" id="cartaDestinataria">Aby</h2>
+                  <div class="letter-divider-flourish">🏔️ ─── ♡ ─── 🏔️</div>
+                </div>
+
+                <div class="letter-body" id="cartaTexto">
+Hoy no quiero promesas perfectas; quiero construir algo real: aventuras compartidas, conversaciones largas, una familia tranquila y un amor que nos permita volver a encontrarnos todos los días.
+
+Con Dios al centro, respeto en todo momento y gratitud por lo sencillo, quiero preguntarte algo muy importante:
+                </div>
+
+                <div class="letter-signature-wrap">
+                  <span class="letter-sign-prefix">Con todo mi cariño,</span>
+                  <span class="letter-sign-name" id="cartaFirma">— Alejandro D.</span>
+                </div>
+
+                <div class="proposal-box" id="preguntaWrap">
+                  <div class="proposal-flourish">
+                    <span class="flourish-line"></span>
+                    <span class="flourish-heart">♥</span>
+                    <span class="flourish-line"></span>
+                  </div>
+                  <h3 class="proposal-question" id="preguntaTexto">¿Quiere ser mi novia, Aby?</h3>
+                  
+                  <div class="proposal-actions">
+                    <button class="btn-love-yes" id="btnSi">
+                      <span class="btn-shimmer"></span>
+                      <span class="btn-text">¡Sí, quiero con todo mi corazón! ♥</span>
+                    </button>
+                    
+                    <button class="btn-love-playful" id="btnNo" title="¿Segura?">
+                      <span>Déjame pensarlo...</span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="env-front-pocket">
+            <div class="env-pocket-left"></div>
+            <div class="env-pocket-right"></div>
+            <div class="env-pocket-bottom"></div>
+          </div>
+
+          <div class="env-flap" id="envFlap"></div>
+
+          <div class="wax-seal" id="waxSeal" title="Toca para abrir la carta">
+            <div class="wax-seal-body">
+              <div class="wax-outer-rim"></div>
+              <div class="wax-inner-seal">
+                <span class="wax-symbol">♥</span>
+                <span class="wax-text">ÁBREME</span>
+              </div>
+              <div class="wax-shine"></div>
+            </div>
+            <div class="wax-hint" id="waxHint">
+              <span class="sparkle-icon">✨</span> Abrir mi respuesta <span class="sparkle-icon">✨</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD DE CELEBRACIÓN Y CONTADOR EN VIVO -->
+    <section class="counter-dashboard-section" id="contadorDashboard" style="display: none;">
+      
+      <!-- Insignia de confirmación de amor -->
+      <div class="celebration-badge-card" id="celebrationBadge">
+        <div class="badge-ribbon">♥ NUESTRA PROMESA ♥</div>
+        <h2 class="celebration-title" id="celebrationTitle">¡Dijo que Sí!</h2>
+        <p class="celebration-subtitle" id="celebrationSubtitle">Alejo & Aby</p>
+        <div class="anniversary-date-badge" id="displayFechaEspecial">
+          <span>Desde este instante para siempre</span>
+        </div>
+      </div>
+
+      <!-- El Contador de Amor -->
+      <div class="love-counter-card">
+        <div class="counter-header">
+          <span class="counter-tag">NUESTRA HISTORIA</span>
+          <h3 class="counter-main-title">Tiempo caminando juntos</h3>
+        </div>
+
+        <div class="countdown-grid">
+          <div class="counter-tile">
+            <div class="tile-number-box">
+              <span class="tile-num" id="cntDias">0</span>
+            </div>
+            <span class="tile-label">DÍAS</span>
+          </div>
+
+          <div class="counter-tile">
+            <div class="tile-number-box">
+              <span class="tile-num" id="cntHoras">0</span>
+            </div>
+            <span class="tile-label">HORAS</span>
+          </div>
+
+          <div class="counter-tile">
+            <div class="tile-number-box">
+              <span class="tile-num" id="cntMins">0</span>
+            </div>
+            <span class="tile-label">MINUTOS</span>
+          </div>
+
+          <div class="counter-tile tile-seconds">
+            <div class="tile-number-box">
+              <span class="tile-num" id="cntSegs">0</span>
+              <span class="heartbeat-pulse">♥</span>
+            </div>
+            <span class="tile-label">SEGUNDOS</span>
+          </div>
+        </div>
+
+        <!-- Estadísticas Románticas Dinámicas -->
+        <div class="romantic-milestones">
+          <div class="milestone-item">
+            <span class="milestone-icon">💓</span>
+            <div class="milestone-info">
+              <strong id="statLatidos">0</strong>
+              <small>Latidos de mi corazón por ti</small>
+            </div>
+          </div>
+          
+          <div class="milestone-item">
+            <span class="milestone-icon">✨</span>
+            <div class="milestone-info">
+              <strong id="statBesos">0</strong>
+              <small>Besos y abrazos prometidos</small>
+            </div>
+          </div>
+
+          <div class="milestone-item">
+            <span class="milestone-icon">🏔️</span>
+            <div class="milestone-info">
+              <strong id="statLunas">0</strong>
+              <small>Amaneceres y noches soñándote</small>
+            </div>
+          </div>
+
+          <div class="milestone-item">
+            <span class="milestone-icon">⛵</span>
+            <div class="milestone-info">
+              <strong id="statSonrisas">0</strong>
+              <small>Horas de felicidad a tu lado</small>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- Fin love-counter-card -->
+
+      <!-- ===== VIDEO SUPER 8 — bailando.mp4 ===== -->
+      <div class="super8-section" id="super8Section">
+        <div class="super8-label-top">
+          <span class="film-icon">🎞</span>
+          <span class="film-text">UN RECUERDO NUESTRO</span>
+          <span class="film-icon">🎞</span>
+        </div>
+
+        <div class="super8-frame" id="super8Frame">
+          <!-- Perforaciones de película izquierda -->
+          <div class="film-sprockets film-sprockets-left">
+            <div class="sprocket"></div><div class="sprocket"></div>
+            <div class="sprocket"></div><div class="sprocket"></div>
+            <div class="sprocket"></div><div class="sprocket"></div>
+          </div>
+
+          <!-- El video en sí -->
+          <div class="super8-screen" id="super8Screen">
+            <video
+              id="bailandoVideo"
+              src="assets/images/bailando.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+            ></video>
+
+            <!-- Overlay de efecto película: grain + scanlines -->
+            <div class="film-overlay">
+              <div class="scanlines"></div>
+              <div class="film-grain"></div>
+              <div class="film-vignette"></div>
+            </div>
+
+            <!-- Indicador de reproducción / audio -->
+            <button class="video-audio-btn" id="videoAudioBtn" title="Activar / silenciar audio del video">
+              <span class="video-audio-icon" id="videoAudioIcon">🔇</span>
+              <span class="video-audio-label">Tocar para escuchar</span>
+            </button>
+
+            <!-- Marca de tiempo estilo cámara -->
+            <div class="film-timestamp" id="filmTimestamp">
+              <span class="ts-date">NOV · 2026</span>
+              <span class="ts-reel">♥ REF-A&A</span>
+            </div>
+          </div>
+
+          <!-- Perforaciones de película derecha -->
+          <div class="film-sprockets film-sprockets-right">
+            <div class="sprocket"></div><div class="sprocket"></div>
+            <div class="sprocket"></div><div class="sprocket"></div>
+            <div class="sprocket"></div><div class="sprocket"></div>
+          </div>
+        </div>
+
+        <div class="super8-caption">
+          <p class="super8-quote">«Sigamos escribiendo mas historias y anecdotas»</p>
+        </div>
+      </div>
+      <!-- ===== FIN VIDEO ===== -->
+
+      <!-- Foto Final Romántica con Cuadro de Recuerdo -->
+      <div class="final-memory-card" id="finalMemoryCard">
+        <div class="final-photo-frame">
+          <img id="finalImg" src="assets/images/foto2.jpeg" alt="Alejo y Aby" onerror="this.src='https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=800'">
+          <div class="frame-tape frame-tape-tl"></div>
+          <div class="frame-tape frame-tape-br"></div>
+          <div class="photo-caption-tag">Regaleme una sonrisa</div>
+        </div>
+
+        <div class="final-dedication">
+          <p class="final-quote" id="finalQuote">“Te elijo hoy y en los caminos por venir”</p>
+          <div class="golden-seal-badge">
+            <svg viewBox="0 0 100 100" width="60" height="60">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#d8436b" stroke-width="2" stroke-dasharray="4,2"/>
+              <circle cx="50" cy="50" r="35" fill="none" stroke="#d8436b" stroke-width="1"/>
+              <text x="50" y="47" text-anchor="middle" font-family="'Playfair Display', serif" font-size="11" fill="#b82d54" font-style="italic">Alejo & Aby</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Footer Elegante -->
+    <footer class="page-footer">
+      <div class="footer-hilo">
+        <svg width="40" height="12" viewBox="0 0 40 12" fill="none">
+          <path d="M0,6 Q10,0 20,6 T40,6" stroke="#d8436b" stroke-width="1.2" opacity="0.6"/>
+        </svg>
+      </div>
+      <p>Hecho con todo el cariño</p>
+    </footer>
+
+  </main>
+
+  <!-- Marca de agua Built by qodev -->
+  <div class="qodev-watermark">
+    <span>built by</span>
+    <a href="https://qodev-ec.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitar el sitio web de Qodev"><strong>qodev</strong></a>
+  </div>
+
+  <!-- Audio elemento con la canción del repositorio -->
+  <audio id="romanticAudio" loop preload="auto">
+    <source src="assets/images/cancion.mpeg" type="audio/mpeg">
+    <source src="assets/images/cancion.mpeg" type="audio/mp3">
+  </audio>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
